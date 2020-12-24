@@ -90,7 +90,6 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
-
                 Message message = dataSnapshot.getValue(Message.class);
                 messageList.add(message);
 
@@ -99,7 +98,7 @@ public class StoreActivity extends AppCompatActivity {
                 Message latest = messageList.get(messageList.size() - 1);
 
                 tvAuthor.setText(latest.author);
-                               tvBody.setText(latest.body);
+                tvBody.setText(latest.body);
             }
 
             @Override
@@ -138,6 +137,7 @@ public class StoreActivity extends AppCompatActivity {
 
         mMessageListener = childEventListener;
     }
+
 
     @Override
     protected void onStop() {

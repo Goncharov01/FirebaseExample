@@ -54,44 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtDetail = (TextView) findViewById(R.id.detail);
 
         mAuth = FirebaseAuth.getInstance();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference myRef = database.getReference("message");
-        DatabaseReference device = database.getReference("device");
-
-        myRef.setValue("Hello, World!");
-        device.setValue("keyboard");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, value, Toast.LENGTH_LONG).show();
-                System.out.println("!!!!!!!!!!" + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-                System.out.println(error.toException());
-
-            }
-        });
-
-
-        device.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                System.out.println("!!!!!!!!!!!" + value);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        
 
     }
 
@@ -134,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             Log.e(TAG, "createAccount: Success!");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            writeNewUser(user.getUid(), getUsernameFromEmail(user.getEmail()), user.getEmail());
                             updateUI(user);
+                            writeNewUser(user.getUid(), getUsernameFromEmail(user.getEmail()), user.getEmail());
                         } else {
                             Log.e(TAG, "createAccount: Fail!", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();

@@ -1,11 +1,16 @@
 package com.example.firebaseexample;
 
-import java.util.HashMap;
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@IgnoreExtraProperties
 public class Message {
 
-    String author;
-    String body;
+    public String author;
+    public String body;
 
     public Message() {
     }
@@ -15,9 +20,9 @@ public class Message {
         this.body = body;
     }
 
-
-    public HashMap<String,Object> toMap(){
-        HashMap<String,Object> result = new HashMap<>();
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
         result.put("author", author);
         result.put("body", body);
 

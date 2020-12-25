@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -147,7 +148,7 @@ public class StoreActivity extends AppCompatActivity {
             mMessageReference.removeEventListener(mMessageListener);
         }
 
-        for (Message message: messageList) {
+        for (Message message : messageList) {
             Log.e(TAG, "listItem: " + message.body);
         }
     }
